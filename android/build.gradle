@@ -32,5 +32,6 @@ repositories {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
+    compile 'com.github.bluejamesbond:textjustify-android:2.1.6'
 }
   
