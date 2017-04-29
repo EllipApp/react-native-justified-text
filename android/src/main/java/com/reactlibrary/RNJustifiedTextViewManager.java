@@ -7,7 +7,6 @@ import com.bluejamesbond.text.style.TextAlignment;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.facebook.react.uimanager.annotations.Nullable;
 
 public class RNJustifiedTextViewManager extends SimpleViewManager<DocumentView> {
 
@@ -28,7 +27,7 @@ public class RNJustifiedTextViewManager extends SimpleViewManager<DocumentView> 
     }
 
     @ReactProp(name = "text")
-    public void setSrc(DocumentView view, @Nullable String src) {
+    public void setSrc(DocumentView view, String src) {
         view.setText(src);
     }
 }
