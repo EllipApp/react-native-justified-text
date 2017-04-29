@@ -1,5 +1,5 @@
 
-package com.reactlibrary;
+package com.ellip.justifiedtext;
 
 import com.bluejamesbond.text.DocumentView;
 import com.bluejamesbond.text.style.TextAlignment;
