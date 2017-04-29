@@ -20,8 +20,13 @@ public class RNJustifiedTextViewManager extends SimpleViewManager<DocumentView> 
     public DocumentView createViewInstance(ThemedReactContext context) {
         DocumentView documentView = new DocumentView(context, DocumentView.PLAIN_TEXT);  // Support plain text
         documentView.getDocumentLayoutParams().setTextAlignment(TextAlignment.JUSTIFIED);
-        documentView.setText("Insert your text here Insert your text here Insert your text here Insert your text here Insert your text here Insert your text here Insert your text here Insert your text here"); // Set to `true` to enable justification
+        // documentView.setText("Insert your text here Insert your text here Insert your text here Insert your text here Insert your text here Insert your text here Insert your text here Insert your text here"); // Set to `true` to enable justification
 
         return documentView;
+    }
+
+    @ReactProp(name = "text")
+    public void setSrc(DocumentView view, @Nullable String src) {
+        view.setText(src);
     }
 }
