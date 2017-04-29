@@ -1,6 +1,11 @@
+import { PropTypes } from 'react';
+import { requireNativeComponent, View } from 'react-native';
 
-import { NativeModules } from 'react-native';
+var iface = {
+    name: 'JustifiedText',
+    propTypes: {
+        ...View.propTypes // include the default view properties
+    },
+};
 
-const { RNJustifiedText } = NativeModules;
-
-export default RNJustifiedText;
+module.exports = requireNativeComponent('JustifiedText', iface);
