@@ -45,9 +45,8 @@
 
 ## Usage
 ```javascript
-import RNJustifiedText from 'react-native-justified-text';
+import JustifiedText from 'react-native-justified-text';
 
-// TODO: What to do with the module?
-RNJustifiedText;
+<JustifiedText>;
 ```
   
