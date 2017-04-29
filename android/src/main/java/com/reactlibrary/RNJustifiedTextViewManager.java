@@ -6,6 +6,8 @@ import com.bluejamesbond.text.style.TextAlignment;
 
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
+import com.facebook.react.uimanager.annotations.ReactProp;
+import com.facebook.react.uimanager.annotations.Nullable;
 
 public class RNJustifiedTextViewManager extends SimpleViewManager<DocumentView> {
 
