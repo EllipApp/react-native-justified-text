@@ -5,6 +5,8 @@ var iface = {
     name: 'JustifiedText',
     propTypes: {
         text: PropTypes.string,
+        color: PropTypes.string,
+        fontFamily: PropTypes.string,
         ...View.propTypes // include the default view properties
     },
 };

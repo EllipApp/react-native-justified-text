@@ -1,5 +1,6 @@
-
 package com.ellip.justifiedtext;
+
+import android.graphics.Color;
 
 import com.bluejamesbond.text.DocumentView;
 import com.bluejamesbond.text.style.TextAlignment;
@@ -29,5 +30,15 @@ public class RNJustifiedTextViewManager extends SimpleViewManager<DocumentView> 
     @ReactProp(name = "text")
     public void setSrc(DocumentView view, String src) {
         view.setText(src);
+    }
+
+    @ReactProp(name = "color")
+    public void setSrc(DocumentView view, String textColor) {
+        view.setColor(Color.parseColor(textColor));
+    }
+
+    @ReactProp(name = "fontFamily")
+    public void setSrc(DocumentView view, String fontFamily) {
+        view.setTypeface(fontFamily);
     }
 }
