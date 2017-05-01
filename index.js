@@ -6,6 +6,8 @@ var iface = {
     propTypes: {
         text: PropTypes.string,
         color: PropTypes.string,
+        fontSize: PropTypes.number,
+        lineHeightMultiplicator: PropTypes.number,
         fontFamily: PropTypes.string,
         ...View.propTypes // include the default view properties
     },

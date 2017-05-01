@@ -38,7 +38,8 @@
 ```javascript
 import JustifiedText from 'react-native-justified-text';
 
-<JustifiedText text="The text to justify" color="#ff0000" fontFamily={require('./myFont.ttf')} style={{height: 200}} >;
+<JustifiedText text="The text to justify" color="#ff0000" fontFamily="myFont.ttf" fontSize={16} lineHeightMultiplicator={2} style={{height: 200}} >;
 ```
   
-Height must be set explicitly to see the component
+Height must be set explicitly to see the component.
+Font family must be in "android/app/src/main/assets/fonts" folder.

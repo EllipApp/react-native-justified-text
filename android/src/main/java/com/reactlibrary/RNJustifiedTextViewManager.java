@@ -3,6 +3,7 @@ package com.ellip.justifiedtext;
 import javax.annotation.Nullable;
 import java.lang.reflect.Field;
 
+import android.util.TypedValue;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.content.Context;
@@ -31,6 +32,11 @@ public class RNJustifiedTextViewManager extends SimpleViewManager<DocumentView> 
         // documentView.setText("Insert your text here Insert your text here Insert your text here Insert your text here Insert your text here Insert your text here Insert your text here Insert your text here"); // Set to `true` to enable justification
 
         return documentView;
+    }
+
+    public static Typeface getFontFromString(Context context, String fontAssetName) {
+        return Typeface.createFromAsset(context.getAssets(),
+                "fonts/" + fontAssetName);
     }
 
     public static void setDefaultFont(Context context,
@@ -64,8 +70,19 @@ public class RNJustifiedTextViewManager extends SimpleViewManager<DocumentView> 
         view.getDocumentLayoutParams().setTextColor(Color.parseColor(textColor));
     }
 
+    @ReactProp(name = "fontSize")
+    public void setFontFamily(DocumentView view, @Nullable int fontSize) {
+        view.getDocumentLayoutParams().setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+    }
+
+    @ReactProp(name = "lineHeightMultiplicator")
+    public void setFontFamily(DocumentView view, @Nullable float multiplicator) {
+        view.getDocumentLayoutParams().setLineHeightMultiplier(multiplicator);
+    }
+
     @ReactProp(name = "fontFamily")
     public void setFontFamily(DocumentView view, @Nullable String fontFamily) {
-        setDefaultFont(view.getContext(), "DEFAULT", fontFamily);
+        view.getDocumentLayoutParams().setTextTypeface(getFontFromString(view.getContext(), fontFamily));
+        // setDefaultFont(view.getContext(), "DEFAULT", fontFamily);
     }
 }
