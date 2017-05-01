@@ -1,6 +1,11 @@
 package com.ellip.justifiedtext;
 
+import javax.annotation.Nullable;
+import java.lang.reflect.Field;
+
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.content.Context;
 import android.graphics.Typeface;
 
 import com.bluejamesbond.text.DocumentView;
@@ -28,19 +33,39 @@ public class RNJustifiedTextViewManager extends SimpleViewManager<DocumentView> 
         return documentView;
     }
 
+    public static void setDefaultFont(Context context,
+                                      String staticTypefaceFieldName, String fontAssetName) {
+        final Typeface regular = Typeface.createFromAsset(context.getAssets(),
+                "fonts/" + fontAssetName);
+        replaceFont(staticTypefaceFieldName, regular);
+    }
+
+    protected static void replaceFont(String staticTypefaceFieldName,
+                                      final Typeface newTypeface) {
+        try {
+            final Field staticField = Typeface.class
+                    .getDeclaredField(staticTypefaceFieldName);
+            staticField.setAccessible(true);
+            staticField.set(null, newTypeface);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
     @ReactProp(name = "text")
-    public void setText(DocumentView view, String text) {
+    public void setText(DocumentView view, @Nullable String text) {
         view.getLayout().setText(text);
     }
 
     @ReactProp(name = "color")
-    public void setColor(DocumentView view, String textColor) {
+    public void setColor(DocumentView view, @Nullable String textColor) {
         view.getDocumentLayoutParams().setTextColor(Color.parseColor(textColor));
     }
 
     @ReactProp(name = "fontFamily")
-    public void setFontFamily(DocumentView view, String fontFamily) {
-        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), fontFamily);
-        view.getDocumentLayoutParams().setTextTypeface(typeface);
+    public void setFontFamily(DocumentView view, @Nullable String fontFamily) {
+        setDefaultFont(view.getContext(), "DEFAULT", fontFamily);
     }
 }
